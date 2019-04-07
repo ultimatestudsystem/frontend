@@ -2,9 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="554094fe-a471-4717-beef-4e99404ba658" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/pic-student.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/chatButton/ChatButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/chatButton/ChatButton.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/chatButton/chatModal/ChatModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/chatButton/chatModal/ChatModal.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/header/Header.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/header/Header.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/image/Image.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/image/Image.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/image/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/image/pic-student.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/modal/Modal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/modal/Modal.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/profileInfo/ProfileInfo.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/profileInfo/ProfileInfo.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/taskModal/TaskModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/taskModal/TaskModal.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/timetable/Timetable.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/timetable/Timetable.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/userModal/UserModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/userPage/userModal/UserModal.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
@@ -102,8 +128,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/userPage/taskModal/TaskModal.module.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+            <state relative-caret-position="357">
+              <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -270,28 +296,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554483616538</updated>
-      <workItem from="1554483618507" duration="55171000" />
+      <workItem from="1554483618507" duration="55430000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55171000" />
+    <option name="totallyTimeSpent" value="55430000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="npm" side_tool="true" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32872504" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32872504" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32872504" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -531,8 +556,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/userPage/taskModal/TaskModal.module.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+        <state relative-caret-position="357">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
         </state>
       </provider>
     </entry>
