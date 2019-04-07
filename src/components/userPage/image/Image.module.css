@@ -1,0 +1,14 @@
+.profilePic {
+    grid-area: pic;
+    margin-top: 60px;
+}
+
+.profilePic img {
+    width: 200px;
+    height: 250px;
+    background: #ccc;
+    margin: auto;
+    display: block;
+    border-radius: 10px;
+    /*box-shadow: 0px 4px 10px 1px #aaa8a8;*/
+}

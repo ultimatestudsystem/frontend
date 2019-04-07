@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+
+.App {
+  background-color: #F8FAFB;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 3fr 11fr 1fr;
+  grid-template-rows: repeat(auto-fit, 1fr);
+  grid-template-areas:
+          "header header header header"
+          ". pic profData ."
+          ". chat-btn profData ."
+          ". timetable timetable ."
+          "footer footer footer footer";
+}
+
+
+
+
+
+.main-content {
+  grid-area: mContent;
+  margin: 90px 0;
+  /*display: grid;*/
+  grid-template-columns: 95px 1fr 4fr 95px;
+  /*grid-template-areas: */
+  /*". pic profData ."
+  ". chat-btn . ."
+  ". timetable timetable .";*/
+}
+
+
+
+footer {
+  grid-area: footer;
+}

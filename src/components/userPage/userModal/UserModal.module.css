@@ -1,0 +1,93 @@
+.btnContent {
+    width: 20%;
+    height: 90%;
+}
+.btnBack {
+    background: none;
+    border: none;
+    font-weight: 700;
+    width: 84%;
+    height: 100%;
+    border-radius: 16px;
+    color: #575757;
+}
+
+.userInfoContent {
+    padding: 0% 5%;
+}
+
+.userInfoContent > div {
+    margin-top: 20px;
+}
+
+.userInfo {
+    display: flex;
+    justify-content: space-between;
+    width: 43%;
+}
+
+.image, .imageContent {
+    width: 54px;
+    height: 54px;
+    border-radius: 30px;
+}
+
+.nameTypeContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.type, .info{
+    font-size: 12px;
+    color: #A5A5A5;
+    text-align: left;
+}
+
+.contact {
+    text-align: left;
+}
+
+.infoTitle{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.subjects {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.subject {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.subjectItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.subjectName {
+    font-weight: bold;
+    font-size: 14px;
+    color: #A5A5A5;
+}
+
+.groups {
+    color: #82B1FF;
+    font-size: 14px;
+}
+
+.footerChatBtn {
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+}
