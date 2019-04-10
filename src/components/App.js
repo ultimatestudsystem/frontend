@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import Image from "./userPage/image/Image";
-import ProfileInfo from "./userPage/profileInfo/ProfileInfo";
-import ChatButton from "./userPage/chatButton/ChatButton";
-import Timetable from "./userPage/timetable/Timetable";
-import Header from "./userPage/header/Header";
-import ChatModal from "./userPage/chatButton/chatModal/ChatModal";
-import UserModal from "./userPage/userModal/UserModal";
-import TaskModal from "./userPage/taskModal/TaskModal";
+import UserPage from "./userPage";
+import {Route} from "react-router-dom";
+import * as ROUTES from './constants/routes'
+import SignUpPage from "./signUpPage";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header/>
-        <Image/>
-        <ProfileInfo/>
-        <ChatButton/>
-        <Timetable/>
-        <footer>
-        </footer>
-        <ChatModal/>
-        <UserModal/>
-        <TaskModal/>
+        <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
+        <Route exact path={ROUTES.USER_PAGE} component={UserPage} />
       </div>
     );
   }
