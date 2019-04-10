@@ -1,11 +1,15 @@
 import React from 'react';
-
+import {withFirebase} from "../Firebase";
+import * as ROUTES from '../../constants/routes';
+import {NavLink, withRouter} from "react-router-dom";
+import {SignInLink} from "../signInPage";
 
 const SignUpPage = ()=> {
     return (
         <div>
             <h1>Sign up</h1>
             <SignUpForm/>
+            <SignInLink/>
         </div>
     );
 };
@@ -13,36 +17,62 @@ const SignUpPage = ()=> {
 const INITIAL_STATE = {
     email: '',
     password: '',
+    name: '',
     error: null
-}
+};
 
-class SignUpForm extends React.Component {
+class SignUpFormBase extends React.Component {
 
 
     constructor(props) {
         super(props);
 
-        this.state = { ...INITIAL_STATE }
+        this.state = {...INITIAL_STATE}
     }
 
     onSubmit = event => {
+        const {email, password, name} = this.state;
 
-        console.log(this.state)
+        this.props.firebase
+            .doCreateUserWithEmailAndPassword(email, password)
+            .then(authUser => {
+
+                this.setState(INITIAL_STATE);
+
+                this.props.firebase
+                    .user(authUser.user.uid)
+                    .set({
+                        name,
+                        email,
+                    });
+
+                this.props.history.push(ROUTES.SIGN_IN);
+
+            })
+            .catch(error => {
+                this.setState({error})
+            });
 
         event.preventDefault();
     };
 
-    onChange = (e)=> {
-        this.setState({[e.target.name]: e.target.value })
+    onChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
     };
 
     render() {
 
-        const {error , email, password} = this.state;
-        let isInvalid = email === '' || password === '';
+        const {error, email, password, name} = this.state;
+        const isInvalid = email === '' || password === '' || name === '';
 
         return (
             <form onSubmit={this.onSubmit}>
+                <input type="text"
+                       name={'name'}
+                       placeholder={'Name'}
+                       onChange={this.onChange}
+                       value={name}
+                />
                 <input type="text"
                        name={'email'}
                        placeholder={'Email address'}
@@ -63,4 +93,14 @@ class SignUpForm extends React.Component {
     }
 }
 
+const SignUpForm = withRouter(withFirebase(SignUpFormBase));
+
+const SignUpLink = ()=> (
+    <p>
+        Don't have an account? <NavLink to={ROUTES.SIGN_UP}>Sign Up</NavLink>
+    </p>
+);
+
 export default SignUpPage;
+
+export { SignUpLink }
