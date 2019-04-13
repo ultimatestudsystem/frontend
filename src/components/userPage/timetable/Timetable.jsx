@@ -1,7 +1,9 @@
 import React from 'react';
 import classes from './Timetable.module.css';
+import {withFirebase} from "../../Firebase";
+import {connect} from "react-redux";
 
-const Task = () => {
+const Task = ({uid}) => {
     // todo get from props
     const taskModal = 'taskModal';
 
@@ -15,19 +17,42 @@ const Task = () => {
   return (
       <div className={classes.taskContent}>
           <div className={classes.task}>
-              <button className={classes.taskBtn} onClick={handleOpenModal}>task</button>
+          {(uid !== '') ? <button className={classes.taskBtn} onClick={handleOpenModal}>task{uid}</button> : ''}
           </div>
+
       </div>
   );
 };
 
-const Subject = ()=> {
+const Subject = ({firebase, course})=> {
 
     function handleOpenModal(){
         const chatModal = document.getElementById('userModal');
         chatModal.style.display='flex';
         document.body.style.overflowY = 'hidden';
     }
+
+    const tasks = [];
+    const tasksFirebase = ['12.04.2019', '13.04.2019', '15.04.2019'];
+    let date = new Date();
+    for (let i=0; i < 4; i++){
+        tasksFirebase.includes(date.toLocaleDateString()) ? tasks.push(<Task uid={i}/>) : tasks.push(<Task uid={''}/>)
+        date.setDate(date.getDate()+1 );
+    }
+
+    const fakeSetState = tasks => {
+        console.log(tasks)
+    };
+
+    const getTasks = ()=> {
+        const course_id = '1'
+        date = new Date();
+        const startDate = date.getTime()/1000|0;
+        date.setDate(date.getDate()+4);
+        const endDate = date.getTime()/1000|0;
+        firebase.tasks(course_id)(startDate, endDate)(fakeSetState);
+    };
+
   return (
       <div className={classes.subjectContent}>
           <div className={classes.subject}>
@@ -35,52 +60,112 @@ const Subject = ()=> {
                   subject name
               </div>
           </div>
-          <Task/>
-          <Task/>
-          <Task/>
-          <Task/>
-
+          {tasks}
       </div>
   );
 };
 
-const Date = ()=> {
-  return (
+const DatE = ({date})=> {
+    return (
       <div>
           <div className={classes.dateItem}>
-              02.02.19
+              {date}
           </div>
       </div>
   );
 };
 
-const Timetable = ()=> {
-  return (
-      <div className={classes.timeTable}>
-          <div className={classes.controlPanel}>
-              <div className={classes.innerControlPanel}>
-                  <button className={classes.controlPanelBtn}>&#8249;</button>
-                  <button className={classes.controlPanelBtn}>&#8250;</button>
-              </div>
-          </div>
-          <div className={classes.date}>
-              <Date/>
-              <Date/>
-              <Date/>
-              <Date/>
+class Timetable extends React.Component {
 
-          </div>
-          <div className={classes.content}>
-             <Subject/>
-             <Subject/>
-             <Subject/>
+    constructor(props){
+        super(props);
 
-          </div>
-      </div>
-  );
+        this.date = this.getDate();
+    }
+
+    componentDidMount() {
+        this.getCourses();
+    }
+
+
+
+
+    getDate = ()=> {
+        let date = new Date();
+        const dates =[];
+        for (let i=0; i < 4; i++){
+            date.setDate(date.getDate()+1);
+            const currentDate = date.toLocaleDateString();
+            dates.push(<DatE date={currentDate} />);
+        }
+        return dates;
+    };
+
+
+    getCourses = ()=> {
+        let groupId = this.props.groupId;
+        console.log(groupId);
+        if (groupId === ''){
+            this.props.firebase.student(this.props.authUser.uid)
+                .once('value')
+                .then(snapshot=> {
+                    groupId = snapshot.val().groupID;
+                    this.props.setCourses(groupId, this.props.firebase)
+                })
+        }else {
+            this.props.setCourses(groupId, this.props.firebase)
+        }
+    };
+
+
+    render() {
+        if (!!this.props.courses)
+            this.courseItems = Object.values(this.props.courses).map((course) => {
+                return <Subject course={course}/>
+            });
+
+        return (
+            <div className={classes.timeTable}>
+                <div className={classes.controlPanel}>
+                    <div className={classes.innerControlPanel}>
+                        <button className={classes.controlPanelBtn} onClick={this.getCourses}>&#8249;</button>
+                        <button className={classes.controlPanelBtn}>&#8250;</button>
+                    </div>
+                </div>
+                <div className={classes.date}>
+                    {this.date}
+                </div>
+                <div className={classes.content}>
+                    {this.courseItems}
+
+                </div>
+            </div>
+        );
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        authUser: state.sessionState.authUser,
+        groupId: state.studentState.groupId,
+        courses: state.courseState.courses,
+    }
 };
 
-export default Timetable;
+const mapDispatchToProps = (dispatch)=> {
+    return {
+        setCourses: (groupId, firebase) => {
+            firebase.courses(groupId)(courses => {
+                    console.log(courses);
+                    const action = {type: 'COURSES_SET', courses: courses};
+                    dispatch(action)
+                }
+            )
+        }
+    }
+};
+
+export default withFirebase(connect(mapStateToProps, mapDispatchToProps)(Timetable));
 
 /*
 *

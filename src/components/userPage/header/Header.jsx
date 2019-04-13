@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Header.module.css'
+import SignOut from "../../signOut";
 
 const Header = ()=> {
 
@@ -12,6 +13,11 @@ const Header = ()=> {
                 <nav>
                     <ul>
                         <li><a href="">Меню</a></li>
+                    </ul>
+                </nav>
+                <nav>
+                    <ul>
+                        <li><SignOut/></li>
                     </ul>
                 </nav>
             </div>
