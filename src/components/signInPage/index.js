@@ -1,7 +1,7 @@
 import React from 'react';
 import {withFirebase} from "../Firebase";
 import * as ROUTES from '../../constants/routes'
-import {Link, NavLink, Redirect, withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {SignUpLink} from "../signUpPage";
 import {compose} from "recompose";
 import {connect} from "react-redux";

@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom';
 import {withFirebase} from "../Firebase";
 import * as ROUTES from '../../constants/routes'
 import {connect} from "react-redux";
+import classes from './index.module.css';
 
 const SignOut = ({firebase, history, onSetAuthUser}) => {
 
@@ -18,7 +19,7 @@ const SignOut = ({firebase, history, onSetAuthUser}) => {
     };
 
     return (
-        <button type={'button'} onClick={doSignOut} >Sign out</button>
+        <button type={'button'} className={classes.exitBtn}  onClick={doSignOut} >Sign out</button>
     );
 };
 

@@ -1,0 +1,15 @@
+.menuList {
+    font-size: 14px;
+    list-style: none;
+    padding: 0px 7%;
+    margin-top: 45px;
+}
+
+.menuList a {
+    color: #6D6D6D;
+    text-decoration: none;
+}
+
+.item {
+    margin-bottom: 20px;
+}

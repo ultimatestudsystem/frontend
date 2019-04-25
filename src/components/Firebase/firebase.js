@@ -1,4 +1,4 @@
-import firebase from 'firebase'
+import firebase from  'firebase'
 import {config} from './config'
 
 // Initialize Firebase
@@ -22,6 +22,23 @@ class Firebase {
         return this.auth.signOut();
     };
 
+    getIdToken = () => {
+        return new Promise((resolve, reject) => {
+            const unsubscribe = this.auth.onAuthStateChanged((user) => {
+                unsubscribe();
+                if (user) {
+                    user.getIdToken().then((idToken) => {
+                        resolve(idToken);
+                    }, (error) => {
+                        resolve(null);
+                    });
+                } else {
+                    resolve(null);
+                }
+            });
+        });
+    };
+
     // ***
     onAuthUserListener = (next, fallback)=> {
         return this.auth.onAuthStateChanged(authUser => {
@@ -32,8 +49,8 @@ class Firebase {
                     .then(snapshot=> {
                         const dbUser = snapshot.val();
                         if (dbUser) {
-                            if (!dbUser.roles) {
-                                dbUser.roles = {};
+                            if (!dbUser.role) {
+                                dbUser.role = 'GUEST';
                             }
 
                             authUser = {
@@ -57,6 +74,22 @@ class Firebase {
 
     users = ()=> this.db.ref('users')
 
+    // *** Chat API *** //
+    chats = ()=> this.db.ref('chats');
+    chat = (prof_uid, student_uid) => (next, fallback) => {
+        return this.chats()
+            .orderByChild('professor_id').equalTo(prof_uid)
+            .orderByChild('student_id').equalTo(student_uid)
+            .limitToFirst(1)
+            .once('value')
+            .then(snapshot=> {
+                next(snapshot.val());
+            })
+            .catch(error=> {
+                fallback(error.message);
+            })
+    };
+
     // *** Message API *** //
     message = uid => this.db.ref(`messages/${uid}`);
 
@@ -66,7 +99,14 @@ class Firebase {
 
     student = uid => this.db.ref(`students/${uid}`);
 
-    professor = uid => this.db.ref(`professors/${uid}`);
+    professor = uid => this.db.ref(`professors/${uid}`); // deleted
+
+    onProfessorListener = (uid, onSetProfessorInfo) => { // deleted
+        this.professor(uid)
+            .on('value', snapshot=> {
+                onSetProfessorInfo(snapshot.val());
+            })
+    };
 
     onStudentListener = (uid ,onSetStudentInfo)=> {
         this.student(uid)
@@ -77,24 +117,51 @@ class Firebase {
 
     // *** Task API *** //
     tasks = course_id => (startDate, endDate) => next => {
-        this.db.ref(`tasks/${course_id}`).orderByChild('added_date').startAt(startDate).endAt(endDate)
+        this.db.ref(`tasks/${course_id}`).orderByChild('last_updating_date').startAt(startDate).endAt(endDate)
             .once('value')
-            .then( snapshot=>{
-                next(snapshot.val());
+            .then( snapshot =>{
+                let tasks = {};
+                Object.values(snapshot.val()).forEach(value => {
+                    tasks[new Date(value['last_updating_date']*1000).toLocaleDateString()] = value;
+                });
+                next(tasks, course_id);
             })
             .catch(error => console.log(error.message));
-    }
+    };
+
+    task_ref = (course_id)=> this.db.ref(`tasks/${course_id}`);
 
     // *** Courses API *** //
-    courses = groupId => next => {
+    course = groupId => next => {
         this.db.ref('courses').orderByChild('group_id').equalTo(groupId)
             .once('value')
             .then(snapshot=> {
-                console.log(groupId)
                next(snapshot.val());
             })
             .catch(error=> console.log(error.message))
-    }
+    };
+
+    course_list_by_group = group_id => next => {
+        this.courses().orderByChild('group_id').equalTo(group_id)
+            .once('value')
+            .then(snapshot=> {
+                next(snapshot.val());
+            })
+            .catch(err=> console.log(err.message))
+    };
+
+    course_list_by_professor = professor_id => next => {
+        this.db.ref('courses').orderByChild('professor_id').equalTo(professor_id)
+            .once('value')
+            .then(snapshot=> {
+                console.log(professor_id)
+                console.log(snapshot.val())
+               next(snapshot.val());
+            })
+            .catch(error=> console.log(error.message))
+    };
+
+    courses = ()=> this.db.ref('courses');
 }
 
 export default Firebase;

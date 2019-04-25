@@ -50,6 +50,7 @@ class SignUpFormBase extends React.Component {
         const roles = {};
 
         roles[ROLES.STUDENT] = ROLES.STUDENT;
+        const role = 'STUDENT';
         event.preventDefault();
 
         this.props.firebase
@@ -64,7 +65,7 @@ class SignUpFormBase extends React.Component {
                         first_name,
                         last_name,
                         email,
-                        roles,
+                        role,
                         middle_name,
                         phone,
                         birth_date,

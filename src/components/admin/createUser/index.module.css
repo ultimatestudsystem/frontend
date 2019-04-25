@@ -1,0 +1,122 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    width: 100%;
+}
+
+.formItem {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+
+
+.title {
+    width: 35%;
+    color: #746D6D;
+    padding-left: 10%;
+}
+
+.star {
+    color: #ff0000;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.btnContainer {
+    flex-direction: row;
+}
+
+.input {
+    width: 65%;
+    height: 35px;
+    padding: 5px 20px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 0 #a8a7a7;
+}
+.courseContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.labelCourse {
+    width: 10%;
+    text-align: center;
+    height: 35px;
+    background: white;
+    padding: 10px 1px;
+    border-radius: 5px 0px 0px 5px;
+    box-shadow: 0 0 3px 0 #a8a7a7;
+}
+
+.inputGroup {
+    width: 55%;
+    border-radius: 0 5px 5px 0;
+}
+
+.btn {
+    width: 30%;
+    margin: 0 2%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: #DDDDDD;
+    color: #6D6D6D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:active, .btnActive {
+    background: #82B1FF;
+    color: white;
+}
+
+.error {
+    width: 65%;
+    font-size: 12px;
+    color: red;
+}
+
+.submitBtnContainer {
+    justify-content: flex-end;
+}
+
+.submitBtnContainer > div {
+    width: 60%;
+}
+
+.cancelBtn, .submitBtn {
+    width: 38%;
+    margin: 5px;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: #82B1FF;
+    color: white;
+}
+
+.submitBtn:active {
+    background: #434eff;
+}
+
+.cancelBtn {
+    background: #ff00009e;
+}
+.cancelBtn:active {
+    background: red;
+}

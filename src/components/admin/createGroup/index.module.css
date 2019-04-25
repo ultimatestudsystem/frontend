@@ -1,0 +1,111 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    width: 100%;
+}
+
+.formItem {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.formItemTitle {
+    justify-content: center;
+    background: #EDEDED;
+    margin-bottom: 50px;
+}
+
+.formItemTitleText {
+    padding: 10px 0;
+    font-size: 16px;
+    color: #585858;
+}
+
+
+.title {
+    width: 35%;
+    color: #746D6D;
+    padding-left: 10%;
+}
+
+.star {
+    color: #ff0000;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input {
+    width: 65%;
+    height: 35px;
+    padding: 5px 20px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 0 3px 0 #a8a7a7;
+}
+.courseContainer {
+    display: flex;
+}
+
+.labelCourse {
+    width: 10%;
+    text-align: center;
+    height: 35px;
+    background: white;
+    padding: 10px 1px;
+    border-radius: 5px 0px 0px 5px;
+    box-shadow: 0 0 3px 0 #a8a7a7;
+}
+
+.inputGroup {
+    width: 55%;
+    border-radius: 0 5px 5px 0;
+}
+
+.btn {
+    width: 30%;
+    margin: 0 2%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: #DDDDDD;
+    color: #6D6D6D;
+}
+
+.btn:active, .btnActive {
+    background: #82B1FF;
+    color: white;
+}
+
+.submitBtn {
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 78%;
+    margin-right: 2%;
+    background: #82B1FF;
+    color: white;
+}
+
+.formItemSubmitBtn {
+    justify-content: center;
+}
+
+.error {
+    width: 65%;
+
+    font-size: 12px;
+    color: red;
+}
